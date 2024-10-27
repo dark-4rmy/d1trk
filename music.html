@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D1TRK Music Search</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="navbar">
+      <a href="#" class="logo">D1TRK Music Index</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="music.html">Music</a></li>
+        <li><a href="releases.html">Releases</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Search Section -->
+  <section class="search-section">
+    <h1>Find D1TRK's Music Online</h1>
+    <p>Search across platforms for your favorite tracks</p>
+    <form id="search-form">
+      <input type="text" id="search-input" placeholder="Enter song or album name" required>
+
+    </form>
+    <div class="platform-links">
+      <button onclick="searchPlatform('YouTube')">Search on YouTube</button>
+      <button onclick="searchPlatform('SoundCloud')">Search on SoundCloud</button>
+
+    </div>
+  </section>
+
+  <script>
+    function searchPlatform(platform) {
+      const query = document.getElementById('search-input').value;
+      if (!query) return alert('Please enter a search term');
+
+      let url = '';
+      switch(platform) {
+        case 'YouTube':
+          url = `https://www.youtube.com/results?search_query=D1TRK+${encodeURIComponent(query)}`;
+          break;
+        case 'SoundCloud':
+          url = `https://soundcloud.com/search?q=D1TRK+${encodeURIComponent(query)}`;
+          break;
+        case 'Spotify':
+          url = `https://open.spotify.com/search/${encodeURIComponent(query)}`;
+          break;
+      }
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
